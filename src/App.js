@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+import GlobalState from "./Context/GlobalState";
+import Add from "./components/Add";
+import MainPage from "./components/MainPage";
+import MovieDetail from "./components/MovieDetail";
+import Watchlist from "./components/WatchList";
+import Watched from "./components/Watched";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalState>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} exact />
+          <Route path="/watchlist" element={<Watchlist />} exact />
+          <Route path="/watched" element={<Watched />} exact />
+          <Route path="/add" element={<Add />} exact />
+          <Route path="/modal/:id" element={<MovieDetail />} exact />
+        </Routes>
+      </Router>
+    </GlobalState>
   );
-}
+};
 
 export default App;
