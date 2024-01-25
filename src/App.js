@@ -22,5 +22,4 @@ const App = () => {
     </GlobalState>
   );
 };
-
 export default App;
