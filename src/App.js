@@ -12,12 +12,12 @@ const App = () => {
     <GlobalState>
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage />} exact />
-          <Route path="/watchlist" element={<Watchlist />} exact />
-          <Route path="/watched" element={<Watched />} exact />
-          <Route path="/add" element={<Add />} exact />
-          <Route path="/modal/:id" element={<MovieDetail />} exact />
-          <Route path="/main" element={<MainPage />} exact />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/watched" element={<Watched />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/modal/:id" element={<MovieDetail />} />
+          <Route path="/main" element={<MainPage />} />
         </Routes>
       </Router>
     </GlobalState>

@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
-
-import GlobalContext from "../Context/GlobalContext";
+import { Navigate } from "react-router-dom";
+import { useMovieContext } from "../Context/GlobalContext";
 import NavBar from "./NavBar";
 import PickedMovie from "./PickedMovie";
 
 const Watched = () => {
   //accessing watched state from GlobalContext
-  const { watched } = useContext(GlobalContext);
-
+  const { watched } = useMovieContext();
+  if (!watched) {
+    return <Navigate top="/" replace={true} />;
+  }
   return (
     <div>
       <NavBar />
@@ -22,7 +23,11 @@ const Watched = () => {
           {watched.length > 0 ? (
             <div className="movie-grid">
               {watched.map((movie) => (
-                <PickedMovie movie={movie} key={movie.id} type="watched" />
+                <PickedMovie
+                  movie={movie}
+                  key={`movie_${movie.id}`}
+                  type="watched"
+                />
               ))}
             </div>
           ) : (

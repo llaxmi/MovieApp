@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
-
-import GlobalContext from "../Context/GlobalContext";
+import { Navigate } from "react-router-dom";
+import { useMovieContext } from "../Context/GlobalContext";
 import NavBar from "./NavBar";
 import PickedMovie from "./PickedMovie";
 
 const WatchList = () => {
-  //accessing watchlist state from GlobalContext
-  const { watchlist } = useContext(GlobalContext);
+  const { watchlist } = useMovieContext();
 
+  if (!watchlist) {
+    return <Navigate to="/" replace={true} />;
+  }
   return (
     <div>
       <NavBar />
@@ -23,7 +24,11 @@ const WatchList = () => {
           {watchlist.length > 0 ? (
             <div className="movie-grid">
               {watchlist.map((movie) => (
-                <PickedMovie movie={movie} key={movie.id} type="watchlist" />
+                <PickedMovie
+                  movie={movie}
+                  key={`movie_${movie.id}`}
+                  type="watchlist"
+                />
               ))}
             </div>
           ) : (

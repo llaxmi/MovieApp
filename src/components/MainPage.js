@@ -37,8 +37,8 @@ const MainPage = () => {
         {movieData.length > 0 && (
           <div>
             <ul className="movieCard">
-              {movieData.map((movie) => (
-                <li key={movie.id}>
+              {movieData.map((movie, index) => (
+                <li key={`movies_${movie.id}_${index}`}>
                   <MovieCard movie={movie} />
                 </li>
               ))}

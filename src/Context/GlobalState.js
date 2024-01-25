@@ -11,6 +11,18 @@ const GlobalState = (props) => {
     localStorage.setItem(key, JSON.stringify(data));
   };
 
+  useEffect(() => {
+    const storedWatchlist = JSON.parse(localStorage.getItem("watchlist"));
+    const storedWatched = JSON.parse(localStorage.getItem("watched"));
+
+    if (storedWatched) {
+      setWatched(storedWatched);
+    }
+    if (storedWatchlist) {
+      setWatchlist(storedWatchlist);
+    }
+  }, []);
+
   //function to add and remove a movie from the watch list respectively
   const addToWatchlist = (movie) => {
     setWatchlist((prevWatchlist) => {
@@ -39,14 +51,6 @@ const GlobalState = (props) => {
     setWatched(updatedWatchedList);
     localStorage.setItem("watched", JSON.stringify(updatedWatchedList));
   };
-
-  //loading data from localStorage
-  useEffect(() => {
-    const storedWatchlist = JSON.parse(localStorage.getItem("watchlist"));
-    const storedWatched = JSON.parse(localStorage.getItem("watched"));
-    setWatchlist(storedWatchlist);
-    setWatched(storedWatched);
-  }, []);
 
   const contextValue = {
     watchlist,
