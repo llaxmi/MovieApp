@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
+
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MovieDetail = () => {
   const [movieDetail, setMovieDetail] = useState();
@@ -38,6 +41,14 @@ const MovieDetail = () => {
     <>
       <NavBar />
       <div className="container">
+        <Link to="/main">
+          <p className="back">
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              style={{ fontSize: "20px", color: "black" }}
+            />
+          </p>
+        </Link>
         <div className="modal">
           {isLoading || !movieDetail ? (
             <h2 style={{ textAlign: "center", display: "flex" }}>Loading...</h2>
