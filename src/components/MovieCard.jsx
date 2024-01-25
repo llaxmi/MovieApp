@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
             />
           </div>
         ) : (
-          <div className="movie_poster" />
+          <div className="movie-poster">{movie.title}</div>
         )}
         <div className="movie_title_overlay">
           <Link className="detailLink" to={`/modal/${movie.id}`}>

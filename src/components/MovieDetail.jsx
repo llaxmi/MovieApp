@@ -16,7 +16,9 @@ const MovieDetail = () => {
     const fetchMovies = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${params.id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${params.id}?api_key=${
+            import.meta.env.VITE_TMDB_KEY
+          }&language=en-US`
         );
         const data = await response.json();
         //check for errors in API response
