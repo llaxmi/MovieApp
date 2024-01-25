@@ -38,7 +38,7 @@ const Add = () => {
             />
           </div>
 
-          {results.length > 0 && (
+          {query && results.length > 0 && (
             <ul className="results">
               {results.map((movie) => (
                 <li key={movie.id}>
@@ -46,6 +46,9 @@ const Add = () => {
                 </li>
               ))}
             </ul>
+          )}
+          {query && results.length === 0 && (
+            <p> No movies found of name "{query}"</p>
           )}
         </div>
       </div>
