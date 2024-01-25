@@ -17,6 +17,7 @@ const App = () => {
           <Route path="/watched" element={<Watched />} exact />
           <Route path="/add" element={<Add />} exact />
           <Route path="/modal/:id" element={<MovieDetail />} exact />
+          <Route path="/main" element={<MainPage />} exact />
         </Routes>
       </Router>
     </GlobalState>
